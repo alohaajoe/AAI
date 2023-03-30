@@ -10,7 +10,7 @@ function preload() {
 
 function setup() {
     // p5.js stuff
-    createCanvas(1000, 500);
+    createCanvas(1000, 800);
     frameRate(1);
     colorMode(HSB, 360, 1, 1, 1);
     background(0, 0, 1);
@@ -18,19 +18,22 @@ function setup() {
 }
 
 function draw() {
+    background(0, 0, 1);
     if (trainingDone) {
         drawWeights(2);
+        push();
+        translate(0, 350);
+        drawWeights(3);
+        pop();
     } else {
         text('loading', 50,50);
     }
 }
 
 function drawWeights(number) {
-    background(0, 0, 1);
     let minAndMax = getMinAndMaxForNumberArray(allWeights, 2);
-
-
-    text('Weights for number 5:', 50, 30);
+    let infoText = 'Weights for number ' + number + ':';
+    text(infoText, 50, 30);
     let counter = number;
     for (let x = 0; x < squareSize.x; x++) {
         for (let y = 0; y < squareSize.y; y++) {
@@ -46,12 +49,12 @@ function drawWeights(number) {
 function getMinAndMaxForNumberArray(array, number) {
     let arrayForSpecificNumber = [];
     let minMaxForArray = [];
-    for (let i = number; i < array.length; i + outputSize) {
+    for (let i = number; i < array.length; i = i + outputSize) {
         arrayForSpecificNumber.push(array[i]);
     }
-    minMaxForArray['min'] = arrayForSpecificNumber.min();
-    minMaxForArray['max'] = arrayForSpecificNumber.max();
-    console.log(minMaxForArray);
+    minMaxForArray['min'] = min(arrayForSpecificNumber);
+    minMaxForArray['max'] = max(arrayForSpecificNumber);
+    // console.log(minMaxForArray);
 
     return minMaxForArray;
 }

@@ -8,7 +8,7 @@ let outputSize = 10;
 let sampleSizeTraining = 200;
 let sampleSizeTesting = 25;
 let modelBatchSize = 1;
-let modelEpochSize = 30;
+let modelEpochSize = 10;
 
 let [x, y] = [];
 let [testX, testY] = [];
