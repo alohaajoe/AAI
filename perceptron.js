@@ -3,6 +3,13 @@ let first_layer;
 let second_layer;
 let mnist_data;
 
+// optimizable values
+let outputSize = 10;
+let sampleSizeTraining = 200;
+let sampleSizeTesting = 25;
+let modelBatchSize = 1;
+let modelEpochSize = 10;
+
 let [x, y] = [];
 let [testX, testY] = [];
 
@@ -15,7 +22,7 @@ function setup() {
 
     // prepare layers and model
     first_layer = tf.layers.dense({
-        units: 10,
+        units: outputSize,
         inputShape: [784,],
         activation: 'sigmoid',
         useBias: false
@@ -31,7 +38,7 @@ function setup() {
     model.compile({ optimizer: tf.train.sgd(2), loss: 'meanSquaredError' });
 
     mnist_data = new MnistData();
-    mnist_data.load(200, 40).then(res => {
+    mnist_data.load(sampleSizeTraining, sampleSizeTesting).then(res => {
         prepareTrainingData();
         trainModel();
     });
@@ -39,39 +46,40 @@ function setup() {
 
 function prepareTrainingData() {
     [x, y] = mnist_data.getTrainData();
-    x = x.reshape([200, 784]);
+    x = x.reshape([sampleSizeTraining, 784]);
 }
 
 function trainModel() {
-    model.fit(x, y, { batchSize: 1, epochs: 400 }
+    model.fit(x, y, { batchSize: modelBatchSize, epochs: modelEpochSize }
     ).then(
         response => testModel());
 }
 
 function testModel() {
-    let testSamples = 40;
-    let errorSum = 0;
+    let numberOfFalsePredictions = 0;
     let predictionQuality;
-    [testX, testY] = mnist_data.getTestData(testSamples);
-    testX = testX.reshape([testSamples, 784]);
+    [testX, testY] = mnist_data.getTestData(sampleSizeTesting);
+    testX = testX.reshape([sampleSizeTesting, 784]);
 
     predictedOutput = model.predict(testX);
-    predictedOutputArray = predictedOutput.arraySync();
-    console.log("prediction for... ");
-    for (let s = 0; s < testSamples; s++) {
-        console.log("sample " + s);
-        for (let i = 0; i < predictedOutputArray[s].length; i++) {
-            console.log(i + ": " + predictedOutputArray[s][i].toFixed(2) + " vs. real: " + testY.arraySync()[s][i]);
-        }
-        let samplePredictionOneHotEncoded = tf.argMax(predictedOutputArray[s]);
-        let samplePredictionOneHotIndex = samplePredictionOneHotEncoded.arraySync();
-        let sampleExpectedOneHotIndex = testY.arraySync()[s].indexOf(Math.max(...testY.arraySync()[s]));
+    // console.log('predictedOutput:');
+    predictedOutput.print(true);
+    // console.log('predictedOutput(einzeln):');
+    let predictedOutputMaxIndex = [];
+    let testYMaxIndex = [];
+    // console.log("prediction for... ");
+    for (let j=0; j< sampleSizeTesting; j++) {
+        // console.log("sample " + j);
+        // console.log("predictedOutputMaxIndex[" + j +"]:");
+        predictedOutputMaxIndex[j] = tf.argMax(predictedOutput.slice(j,1),1);
+        // predictedOutputMaxIndex[j].print(true);
+        testYMaxIndex[j] = tf.argMax(testY.slice(j,1),1);
+        // testYMaxIndex[j].print(true);
 
-        console.log(samplePredictionOneHotIndex + " vs. " + sampleExpectedOneHotIndex);
-
-        errorSum += samplePredictionOneHotIndex - sampleExpectedOneHotIndex != 0 ? 1 : 0;
-        console.log("zwischenstand errorsum " + errorSum);
+        numberOfFalsePredictions += predictedOutputMaxIndex[j].equal(testYMaxIndex[j]).dataSync() != 0 ? 0 : 1;
+        // console.log("numberOfFalsePredictions: " + numberOfFalsePredictions);
     }
-    predictionQuality = (1.0 - (errorSum / testSamples)) * 100;
+
+    predictionQuality = (1.0 - (numberOfFalsePredictions / sampleSizeTesting)) * 100;
     console.log("Prediction quality: " + predictionQuality + " %");
 }
