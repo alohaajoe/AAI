@@ -35,7 +35,7 @@ function draw() {
 }
 
 function drawWeights(number) {
-    let minAndMax = getMinAndMaxForNumberArray(allWeights, 2);
+    let minAndMax = getMinAndMaxForNumberArray(allWeights, number);
     text(number, 50, 40);
     let counter = number;
     for (let y = 0; y < squareSize.y; y++) {
@@ -61,5 +61,3 @@ function getMinAndMaxForNumberArray(array, number) {
 
     return minMaxForArray;
 }
-
-
