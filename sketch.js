@@ -4,60 +4,65 @@ let numberOfSymbols = 10;
 let trainingDone = false;
 let microSquareSize = 3;
 
-function preload() {
-    startPerceptron();
-}
+var drawWeightsModule = function( w ) {
 
-
-function setup() {
-    // p5.js stuff
-    createCanvas(1200, 800);
-    frameRate(1);
-    colorMode(HSB, 360, 1, 1, 1);
-    background(0, 0, 1);
-    textSize(12);
-    noStroke();
-}
-
-function draw() {
-    background(0, 0, 1);
-    if (trainingDone) {
-        text("Weights for numbers:",50, 20);
-        for (let i = 0; i < outputSize; i++) {
-            drawWeights(i);
-            push();
-        translate(100, 0);
-        }
-        pop();
-    } else {
-        text('loading', 50,50);
+    w.preload = function() {
+        startPerceptron();
     }
-}
 
-function drawWeights(number) {
-    let minAndMax = getMinAndMaxForNumberArray(allWeights, number);
-    text(number, 50, 40);
-    let counter = number;
-    for (let y = 0; y < squareSize.y; y++) {
-        for (let x = 0; x < squareSize.x; x++) {
-            let squareAlpha = allWeights[counter];
-            let mappedSquareAlpha = map(squareAlpha, minAndMax.min, minAndMax.max, 1, 0);
-            fill(0, 1, 0, mappedSquareAlpha);
-            square(50 + x * microSquareSize, 50 + y * microSquareSize, microSquareSize);
-            counter += outputSize;
+
+    w.setup = function() {
+        // p5.js stuff
+        w.createCanvas(1100, 300);
+        w.frameRate(1);
+        w.colorMode(w.HSB, 360, 1, 1, 1);
+        w.background(0, 0, 1);
+        w.textSize(12);
+        w.noStroke();
+    }
+
+    w.draw = function() {
+        w.background(0, 0, 1);
+        if (trainingDone) {
+            w.text("Weights for numbers:",50, 20);
+            for (let i = 0; i < outputSize; i++) {
+                w.drawWeights(i);
+                w.push();
+                w.translate(100, 0);
+            }
+            w.pop();
+        } else {
+            w.text('loading', 50,50);
         }
     }
-}
 
-function getMinAndMaxForNumberArray(array, number) {
-    let arrayForSpecificNumber = [];
-    let minMaxForArray = [];
-    for (let i = number; i < array.length; i = i + outputSize) {
-        arrayForSpecificNumber.push(array[i]);
+    w.drawWeights = function(number) {
+        let minAndMax = w.getMinAndMaxForNumberArray(allWeights, number);
+        w.text(number, 50, 40);
+        let counter = number;
+        for (let y = 0; y < squareSize.y; y++) {
+            for (let x = 0; x < squareSize.x; x++) {
+                let squareAlpha = allWeights[counter];
+                let mappedSquareAlpha = w.map(squareAlpha, minAndMax.min, minAndMax.max, 1, 0);
+                w.fill(0, 1, 0, mappedSquareAlpha);
+                w.square(50 + x * microSquareSize, 50 + y * microSquareSize, microSquareSize);
+                counter += outputSize;
+            }
+        }
     }
-    minMaxForArray['min'] = min(arrayForSpecificNumber);
-    minMaxForArray['max'] = max(arrayForSpecificNumber);
-    // console.log(minMaxForArray);
 
-    return minMaxForArray;
+    w.getMinAndMaxForNumberArray = function(array, number) {
+        let arrayForSpecificNumber = [];
+        let minMaxForArray = [];
+        for (let i = number; i < array.length; i = i + outputSize) {
+            arrayForSpecificNumber.push(array[i]);
+        }
+        minMaxForArray['min'] = w.min(arrayForSpecificNumber);
+        minMaxForArray['max'] = w.max(arrayForSpecificNumber);
+        // console.log(minMaxForArray);
+
+        return minMaxForArray;
+    }
 }
+
+let drawWeightsModuleElement = new p5(drawWeightsModule, 'drawWeightsModule');
