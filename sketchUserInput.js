@@ -12,12 +12,9 @@ var drawUserInputModule = function( u ) {
         u.colorMode(u.HSB, 360, 1, 1, 1);
         u.background(0, 0, 1);
         u.textSize(12);
-        // noStroke();
     }
 
     u.draw = function() {
-        // u.fill(300,80,80,1);
-        // u.rect(0,0,500,500);
         u.background(0, 0, 1);
 
         let counter = 0;
@@ -28,7 +25,6 @@ var drawUserInputModule = function( u ) {
                 counter++;
             }
         }
-
     }
 
     u.mouseDragged = function() {
@@ -42,16 +38,13 @@ var drawUserInputModule = function( u ) {
                     console.log('boing ' + counter);
                     inputSquareArray[counter] = 1;
                     console.log('2nd boing ' + inputSquareArray[counter]);
-
                 }
                 counter++;
             }
         }
         console.log(inputSquareArray);
-
         u.pop();
     }
 }
 
 let drawUserInputModuleElement = new p5(drawUserInputModule, 'drawUserInputModule');
-
