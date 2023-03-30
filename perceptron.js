@@ -8,36 +8,34 @@ let outputSize = 10;
 let sampleSizeTraining = 200;
 let sampleSizeTesting = 25;
 let modelBatchSize = 1;
-let modelEpochSize = 10;
+let modelEpochSize = 30;
 
 let [x, y] = [];
 let [testX, testY] = [];
 
-function setup() {
-    // p5.js stuff
-    createCanvas(1000, 500);
-    frameRate(5);
-    colorMode(HSB, 360, 1, 1, 1);
-    background(0, 0, 1);
 
-    // prepare layers and model
-    first_layer = tf.layers.dense({
-        units: outputSize,
-        inputShape: [784,],
-        activation: 'sigmoid',
-        useBias: false
-    });
-    // second_layer = tf.layers.dense({
-    //     units: 3,
-    //     activation: 'sigmoid',
-    //     useBias: false
-    // });
+// prepare layers and model
+first_layer = tf.layers.dense({
+    units: outputSize,
+    inputShape: [784,],
+    activation: 'sigmoid',
+    useBias: false
+});
+// second_layer = tf.layers.dense({
+//     units: 3,
+//     activation: 'sigmoid',
+//     useBias: false
+// });
 
+
+
+function startPerceptron() {
     model = tf.sequential({ layers: [first_layer] });
     model.summary();
     model.compile({ optimizer: tf.train.sgd(2), loss: 'meanSquaredError' });
 
     mnist_data = new MnistData();
+
     mnist_data.load(sampleSizeTraining, sampleSizeTesting).then(res => {
         prepareTrainingData();
         trainModel();
@@ -82,4 +80,14 @@ function testModel() {
 
     predictionQuality = (1.0 - (numberOfFalsePredictions / sampleSizeTesting)) * 100;
     console.log("Prediction quality: " + predictionQuality + " %");
+
+    allWeights = getAllWeights();
+    trainingDone = true;
+}
+
+
+function getAllWeights() {
+    for (let i = 0; i < model.getWeights().length; i++) {
+        return model.getWeights()[i].dataSync();
+    }
 }
