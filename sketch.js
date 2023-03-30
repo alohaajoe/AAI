@@ -16,7 +16,7 @@ function setup() {
     colorMode(HSB, 360, 1, 1, 1);
     background(0, 0, 1);
     textSize(12);
-
+    noStroke();
 }
 
 function draw() {
@@ -38,10 +38,10 @@ function drawWeights(number) {
     let minAndMax = getMinAndMaxForNumberArray(allWeights, 2);
     text(number, 50, 40);
     let counter = number;
-    for (let x = 0; x < squareSize.x; x++) {
-        for (let y = 0; y < squareSize.y; y++) {
+    for (let y = 0; y < squareSize.y; y++) {
+        for (let x = 0; x < squareSize.x; x++) {
             let squareAlpha = allWeights[counter];
-            let mappedSquareAlpha = map(squareAlpha, minAndMax.min, minAndMax.max,0,1);
+            let mappedSquareAlpha = map(squareAlpha, minAndMax.min, minAndMax.max, 1, 0);
             fill(0, 1, 0, mappedSquareAlpha);
             square(50 + x * microSquareSize, 50 + y * microSquareSize, microSquareSize);
             counter += outputSize;
