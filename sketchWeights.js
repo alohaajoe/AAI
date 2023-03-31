@@ -23,17 +23,18 @@ var drawWeightsModule = function( w ) {
 
     w.draw = function() {
         w.background(0, 0, 1);
-        if (trainingDone) {
-            w.text("Weights for numbers:",50, 20);
-            for (let i = 0; i < outputSize; i++) {
-                w.drawWeights(i);
-                w.push();
-                w.translate(100, 0);
-            }
-            w.pop();
-        } else {
-            w.text('loading', 50,50);
+        if (!trainingDone) {
+            allWeights = getAllWeights();
         }
+
+        w.text("Weights for numbers:",50, 20);
+        w.push();
+        for (let i = 0; i < outputSize; i++) {
+            w.drawWeights(i);
+            
+            w.translate(100, 0);
+        }
+        w.pop();
     }
 
     w.drawWeights = function(number) {
