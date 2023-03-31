@@ -1,12 +1,13 @@
+let inputSquareArray = [];
+
 var drawUserInputModule = function( u ) {
 
-    let inputSquareArray = [];
-    for (let i = 0; i < 784; i++) {
-        inputSquareArray[i] = 0;
-    }
+    
+    
     let inputSquareSize = 20;
 
     u.setup = function() {
+        refresh();
         u.createCanvas(560, 560);
         u.frameRate(30);
         u.colorMode(u.HSB, 360, 1, 1, 1);
@@ -29,6 +30,8 @@ var drawUserInputModule = function( u ) {
         }
     }
 
+    
+
     u.mouseDragged = function() {
         u.push();
         u.translate(500,500);
@@ -49,3 +52,8 @@ var drawUserInputModule = function( u ) {
 }
 
 let drawUserInputModuleElement = new p5(drawUserInputModule, 'drawUserInputModule');
+function refresh () {
+    for (let i = 0; i < 784; i++) {
+        inputSquareArray[i] = 0;
+    }
+}

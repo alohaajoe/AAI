@@ -2,22 +2,10 @@
 <html>
 
 <head>
+  <title>Team3</title>
   <meta charset="utf-8">
   <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-  </style>
-  
+ 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
@@ -25,6 +13,7 @@
   <script src="sketchUserInput.js"></script>
   <script src="mnist_data.js"></script>
   <script src="perceptron.js"></script>
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -32,8 +21,10 @@
   <main>
     <div class="loader"></div>
 
-    <div id="drawWeightsModule" onload="displayStuff"></div>
+    <div id="drawWeightsModule"></div>
     <div id="drawUserInputModule"></div>
+    <button class="button" id="refreshButton" onclick="refresh()">Refresh</button>
+    <button class="button" id="rightButton">right</button>
   </main>
   
 </body>
