@@ -15,14 +15,16 @@ var drawUserInputModule = function( u ) {
     }
 
     u.draw = function() {
-        u.background(0, 0, 1);
+        if (trainingDone) {
+            u.background(0, 0, 1);
 
-        let counter = 0;
-        for (let y = 0; y < squareSize.y; y++) {
-            for (let x = 0; x < squareSize.x; x++) {
-                u.fill(0, 0, inputSquareArray[counter], 1);
-                u.square(x * inputSquareSize, y * inputSquareSize, inputSquareSize);
-                counter++;
+            let counter = 0;
+            for (let y = 0; y < squareSize.y; y++) {
+                for (let x = 0; x < squareSize.x; x++) {
+                    u.fill(0, 0, inputSquareArray[counter], 1);
+                    u.square(x * inputSquareSize, y * inputSquareSize, inputSquareSize);
+                    counter++;
+                }
             }
         }
     }
@@ -35,9 +37,7 @@ var drawUserInputModule = function( u ) {
             for (let x = 0; x < squareSize.x; x++) {
                 if (u.mouseX >=  x * inputSquareSize && u.mouseX <  x * inputSquareSize + inputSquareSize  
                     && u.mouseY >=  y * inputSquareSize &&  u.mouseY <  y * inputSquareSize + inputSquareSize) {
-                    console.log('boing ' + counter);
                     inputSquareArray[counter] = 1;
-                    console.log('2nd boing ' + inputSquareArray[counter]);
                 }
                 counter++;
             }
