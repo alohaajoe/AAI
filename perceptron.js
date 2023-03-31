@@ -81,7 +81,7 @@ function testModel() {
     predictionQuality = (1.0 - (numberOfFalsePredictions / sampleSizeTesting)) * 100;
     console.log("Prediction quality: " + predictionQuality + " %");
 
-    allWeights = getAllWeights();
+    // allWeights = getAllWeights();
     trainingDone = true;
 }
 
