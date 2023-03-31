@@ -9,8 +9,9 @@ let sampleSizeTraining = 200;
 let sampleSizeTesting = 1;
 let modelBatchSize = 1;
 let modelEpochSize = 10;
+let userInputEpochSize = 1;
 
-let [x, y] = [];
+let [mnistX, mnistY] = [];
 let [testX, testY] = [];
 
 
@@ -38,17 +39,17 @@ function startPerceptron() {
 
     mnist_data.load(sampleSizeTraining, sampleSizeTesting).then(res => {
         prepareTrainingData();
-        trainModel();
+        trainModel(mnistX, mnistY, modelEpochSize);
     });
 }
 
 function prepareTrainingData() {
-    [x, y] = mnist_data.getTrainData();
-    x = x.reshape([sampleSizeTraining, 784]);
+    [mnistX, mnistY] = mnist_data.getTrainData();
+    mnistX = mnistX.reshape([sampleSizeTraining, 784]);
 }
 
-function trainModel() {
-    model.fit(x, y, { batchSize: modelBatchSize, epochs: modelEpochSize }
+function trainModel(x, y, epochSize) {
+    model.fit(x, y, { batchSize: modelBatchSize, epochs: epochSize }
     ).then(
         response => testModel());
 }
