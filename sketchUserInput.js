@@ -52,6 +52,7 @@ var drawUserInputModule = function( u ) {
 }
 
 let drawUserInputModuleElement = new p5(drawUserInputModule, 'drawUserInputModule');
+
 function refresh () {
     for (let i = 0; i < 784; i++) {
         inputSquareArray[i] = 0;
