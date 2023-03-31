@@ -40,3 +40,4 @@
   Es gibt jetzt auch ein Canvas, auf dem gezeichnet werden kann. Ziel ist es nun diesen Canvas auszulesen und es in das Parzeptron Modell zu übergeben.
   Wir haben übrigens wirklich die Darstellung der Weights falsch gehabt:
   Es geht nach Spalten, nicht nach Zeilen.
+- Man sieht nun, wie sich die Weights entwickeln. Der Effekt ist cool, auch weil man sieht bzw. besser erahnen kann, worum es überhaupt geht.

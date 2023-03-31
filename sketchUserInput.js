@@ -43,6 +43,7 @@ var drawUserInputModule = function( u ) {
             }
         }
         console.log(inputSquareArray);
+        getPredictionForUserInput(inputSquareArray);
         u.pop();
     }
 }

@@ -6,7 +6,7 @@ let mnist_data;
 // optimizable values
 let outputSize = 10;
 let sampleSizeTraining = 200;
-let sampleSizeTesting = 25;
+let sampleSizeTesting = 1;
 let modelBatchSize = 1;
 let modelEpochSize = 10;
 
@@ -58,7 +58,6 @@ function testModel() {
     let predictionQuality;
     [testX, testY] = mnist_data.getTestData(sampleSizeTesting);
     testX = testX.reshape([sampleSizeTesting, 784]);
-
     predictedOutput = model.predict(testX);
     // console.log('predictedOutput:');
     predictedOutput.print(true);
@@ -83,6 +82,15 @@ function testModel() {
 
     // allWeights = getAllWeights();
     trainingDone = true;
+}
+
+function getPredictionForUserInput(inputArray){
+    let inputTensor = tf.tensor(inputArray);
+    inputTensor = inputTensor.reshape([1, 784]);
+    //inputTensor.print(true);
+    predictedOutput = model.predict(inputTensor);
+    console.log('predictedOutput:');
+    predictedOutput.print(true);
 }
 
 
