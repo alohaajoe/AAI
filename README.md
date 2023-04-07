@@ -41,3 +41,7 @@
   Wir haben übrigens wirklich die Darstellung der Weights falsch gehabt:
   Es geht nach Spalten, nicht nach Zeilen.
 - Man sieht nun, wie sich die Weights entwickeln. Der Effekt ist cool, auch weil man sieht bzw. besser erahnen kann, worum es überhaupt geht.
+- Die Umsetzung des Arrays in das Modell war einfacher als gedacht.
+- Wir haben nun zumindest einen Funktionierenden Refresh Button. Und dazu eine Button.js. die sich nur um die Buttons kümmern soll.
+  Ebenso haben wir nun eine CSS Datei.
+- Nächster Schritt ist es, die Buchstaben mit einzubinden und einen User-Input bezüglich des Prüfens des Ergebnisses zu schaffen und damit dann wieder das Modell zu trainieren.
