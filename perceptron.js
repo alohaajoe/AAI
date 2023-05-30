@@ -76,6 +76,7 @@ function trainModelOnUserInput(x, y, epochSize) {
     x = x.reshape([1,784]);
     y = y.reshape([1,outputSize]);
     model.fit(x, y, { batchSize: modelBatchSize, epochs: epochSize });
+    drawWeightsModule;
 
 }
 

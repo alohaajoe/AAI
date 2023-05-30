@@ -1,6 +1,5 @@
 let allWeights;
 let squareSize = {x: 28, y:28};
-let numberOfSymbols = 10;
 let trainingDone = false;
 let microSquareSize = 3;
 
@@ -12,7 +11,7 @@ var drawWeightsModule = function( w ) {
 
     w.setup = function() {
         // p5.js stuff
-        w.createCanvas(1100, 200);
+        w.createCanvas(700, 700);
         w.frameRate(1);
         w.colorMode(w.HSB, 360, 1, 1, 1);
         w.background(0, 0, 1);
@@ -22,16 +21,22 @@ var drawWeightsModule = function( w ) {
 
     w.draw = function() {
         w.background(0, 0, 1);
-        if (!trainingDone) {
+       // if (!trainingDone) {
             allWeights = getAllWeights();
-        }
+       // }
 
         w.text("Weights for numbers:",50, 20);
         w.push();
+        let counter = 1;
         for (let i = 0; i < outputSize; i++) {
             w.drawWeights(i);
-            
             w.translate(100, 0);
+            
+            if(counter == 6){
+                w.translate(-100*counter+1, 100);
+                counter = 0;
+            }
+            counter++;
         }
         w.pop();
     }
