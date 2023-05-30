@@ -14,6 +14,8 @@ let userInputEpochSize = 1;
 let [mnistX, mnistY] = [];
 let [testX, testY] = [];
 
+let topThreeIndicesArray = [];
+let predictionsArrayOrig = [];
 
 // prepare layers and model
 first_layer = tf.layers.dense({
@@ -106,9 +108,10 @@ function getPredictionForUserInput(inputArray){
     
     console.log(predictedOutput.dataSync());
 
-    const predictionsArrayOrig = predictedOutput.dataSync();
+    topThreeIndicesArray = [];
+    predictionsArrayOrig = predictedOutput.dataSync();
     let predictionsArray = [...predictionsArrayOrig];    
-    let topThreeArray = [];
+    
 
     console.log("predictionsArray");
     console.log(predictionsArray);
@@ -116,13 +119,13 @@ function getPredictionForUserInput(inputArray){
     for(let i = 0; i < 3; i++) {
         let highestIndex = predictionsArray.indexOf(Math.max(...predictionsArray));
         predictionsArray[highestIndex] = 0;
-        topThreeArray.push(highestIndex);
+        topThreeIndicesArray.push(highestIndex);
     }
 
     // todo: map index to symbol
 
     console.log("topThreeArray");
-    console.log(topThreeArray);
+    console.log(topThreeIndicesArray);
 }
 
 

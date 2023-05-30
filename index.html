@@ -11,7 +11,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
   <script src="sketchWeights.js"></script>
   <script src="sketchUserInput.js"></script>
+  <script src="sketchPredictions.js"></script>
   <script src="mnist_data.js"></script>
+  <script src="symbolMap.js"></script>
   <script src="perceptron.js"></script>
   <link rel="stylesheet" href="style.css">
 
@@ -21,8 +23,12 @@
   <main id="main">
     <div class="loader"></div>
 
+
     <div id="drawWeightsModule"></div>
-    <div id="drawUserInputModule"></div>
+    <div class="row">
+      <div id="drawUserInputModule"></div>
+      <div id="drawPredictionsModule"></div>
+    </div>
 
     <div id="buttons">
       <button id="button-refresh">Refresh</button>

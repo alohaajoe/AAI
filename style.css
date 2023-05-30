@@ -67,3 +67,11 @@ button::before {
     justify-content: center;
     margin-top: 25px;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:30px;
+}
+
