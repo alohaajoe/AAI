@@ -63,7 +63,17 @@ function trainModel(x, y, epochSize) {
 }
 
 function trainModelOnUserInput(x, y, epochSize) {
+    console.log("click!");
     console.log(x, y);
+
+    if (Array.isArray(x) || Array.isArray(y)) {
+        x = tf.tensor(x);
+        y = tf.tensor(y);
+    } 
+
+    x = x.reshape([1,784]);
+    y = y.reshape([1,10]);
+    model.fit(x, y, { batchSize: modelBatchSize, epochs: epochSize });
 
 }
 
