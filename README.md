@@ -40,8 +40,40 @@
   Es gibt jetzt auch ein Canvas, auf dem gezeichnet werden kann. Ziel ist es nun diesen Canvas auszulesen und es in das Parzeptron Modell zu übergeben.
   Wir haben übrigens wirklich die Darstellung der Weights falsch gehabt:
   Es geht nach Spalten, nicht nach Zeilen.
+
 - Man sieht nun, wie sich die Weights entwickeln. Der Effekt ist cool, auch weil man sieht bzw. besser erahnen kann, worum es überhaupt geht.
+
 - Die Umsetzung des Arrays in das Modell war einfacher als gedacht.
+
 - Wir haben nun zumindest einen Funktionierenden Refresh Button. Und dazu eine Button.js. die sich nur um die Buttons kümmern soll.
   Ebenso haben wir nun eine CSS Datei.
+
 - Nächster Schritt ist es, die Buchstaben mit einzubinden und einen User-Input bezüglich des Prüfens des Ergebnisses zu schaffen und damit dann wieder das Modell zu trainieren.
+
+---
+
+## 30.05.2023 - Dienstag | Mini-Hackathon
+
+- Nachdem wir heute mit dem Kurs Interaction Design angefangen haben, veranstalten wir einen kleinen Mini Hackathon.
+
+- Wir müssen uns erstmal anschauen, wie der Stand der Dinge war.
+
+- Marc hatte schon weiter gearbeitet und  einen Button für jeden Buchstaben eingefügt. (Allerdings alles noch ohne Funktion).
+
+- Ausgabe der Top 3 nicht nur auf der Konsole, sondern auch auf der Seite visualisieren
+
+- Java Script sucks. Hatten Probleme mit tf.dataSync. Synchronisiert anscheinend in beide Richtungen. (?) Wenn wir etwas im Array ändern, ändern wir anscheinend auch den Tensor.
+  Um eine Kopie vom array zu machen müssen wir anscheinend einen Spreadoperator verwenden.
+
+- Selbst vanilla JS wird mit array2 = array1 offenbar keine Kopie erstellt, sondern lediglich referenziert.
+
+- Uns wird nun die Top3 auf dem Bildschirm ausgegeben mit der MatchRate zusammen.
+
+- Alle Weights sind sichtbar und verändern sich!
+
+- Das Modell ist nun um 26 Labels erweitert, so dass auch Buchstaben nachtrainiert werden können.
+
+```javascript
+let emptyVector = tf.zeros([sampleSizeTraining, outputSize-10]);
+y = tf.concat([y,emptyVector],1);
+```
