@@ -34,7 +34,7 @@ var drawUserInputModule = function( u ) {
 
     u.mouseDragged = function() {
         u.push();
-        u.translate(500,500);
+        // u.translate(560, 560);
         let counter = 0;
         for (let y = 0; y < squareSize.y; y++) {
             for (let x = 0; x < squareSize.x; x++) {

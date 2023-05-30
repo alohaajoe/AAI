@@ -13,7 +13,7 @@ var drawWeightsModule = function( w ) {
 
     w.setup = function() {
         // p5.js stuff
-        w.createCanvas(1100, 300);
+        w.createCanvas(1100, 200);
         w.frameRate(1);
         w.colorMode(w.HSB, 360, 1, 1, 1);
         w.background(0, 0, 1);
