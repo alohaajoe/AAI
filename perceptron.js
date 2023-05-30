@@ -32,7 +32,7 @@ first_layer = tf.layers.dense({
 
 function startPerceptron() {
     model = tf.sequential({ layers: [first_layer] });
-    model.summary();
+    // model.summary();
     model.compile({ optimizer: tf.train.sgd(2), loss: 'meanSquaredError' });
 
     mnist_data = new MnistData();
@@ -49,9 +49,20 @@ function prepareTrainingData() {
 }
 
 function trainModel(x, y, epochSize) {
+    console.log(x, y);
+    if (Array.isArray(x) || Array.isArray(y)) {
+        x = tf.tensor(x);
+        y = tf.tensor(y);
+    } 
+
     model.fit(x, y, { batchSize: modelBatchSize, epochs: epochSize }
     ).then(
         response => testModel());
+}
+
+function trainModelOnUserInput(x, y, epochSize) {
+    console.log(x, y);
+
 }
 
 function testModel() {

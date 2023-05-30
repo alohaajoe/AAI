@@ -11,12 +11,12 @@ main {
     align-items: center;
 }
 
-.button {
+button {
     color:white;
     font-size: 1.2em;
     font-family: 'Press Start 2P', cursive;
-    width: 200px;
-    height: 70px;
+    width: 150px;
+    height: 60px;
     background: #464646;
     border: 0px;
     position: relative;
@@ -26,12 +26,12 @@ main {
         inset 4px 0px 1px 1px lightgray;
 }
 
-.button:hover {
+button:hover {
     cursor: pointer;
     background-color: #2e2e2e;
 }
 
-.button:active {
+button:active {
     top: 5px;
     box-shadow:
         -4px 2px 1px 1px grey,
@@ -39,7 +39,7 @@ main {
         4px 0px 1px 1px lightgray;
 }
 
-.button::after {
+button::after {
     content: '';
     background: black;
     position: absolute;
@@ -50,7 +50,7 @@ main {
     z-index: -1;
 }
 
-.button::before {
+button::before {
     content: '';
     background: black;
     position: absolute;
@@ -61,3 +61,9 @@ main {
     z-index: -1;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px;
+}
