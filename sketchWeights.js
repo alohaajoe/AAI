@@ -10,7 +10,6 @@ var drawWeightsModule = function( w ) {
         startPerceptron();
     }
 
-
     w.setup = function() {
         // p5.js stuff
         w.createCanvas(1100, 200);

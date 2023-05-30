@@ -103,6 +103,26 @@ function getPredictionForUserInput(inputArray){
     predictedOutput = model.predict(inputTensor);
     console.log('predictedOutput:');
     predictedOutput.print(true);
+    
+    console.log(predictedOutput.dataSync());
+
+    const predictionsArrayOrig = predictedOutput.dataSync();
+    let predictionsArray = [...predictionsArrayOrig];    
+    let topThreeArray = [];
+
+    console.log("predictionsArray");
+    console.log(predictionsArray);
+
+    for(let i = 0; i < 3; i++) {
+        let highestIndex = predictionsArray.indexOf(Math.max(...predictionsArray));
+        predictionsArray[highestIndex] = 0;
+        topThreeArray.push(highestIndex);
+    }
+
+    // todo: map index to symbol
+
+    console.log("topThreeArray");
+    console.log(topThreeArray);
 }
 
 
