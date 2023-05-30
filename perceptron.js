@@ -4,7 +4,7 @@ let second_layer;
 let mnist_data;
 
 // optimizable values
-let outputSize = 10;
+let outputSize = 36;
 let sampleSizeTraining = 200;
 let sampleSizeTesting = 1;
 let modelBatchSize = 1;
@@ -57,6 +57,8 @@ function trainModel(x, y, epochSize) {
         y = tf.tensor(y);
     } 
 
+    let emptyVector = tf.zeros([sampleSizeTraining, outputSize-10]);
+    y = tf.concat([y,emptyVector],1);
     model.fit(x, y, { batchSize: modelBatchSize, epochs: epochSize }
     ).then(
         response => testModel());
@@ -72,7 +74,7 @@ function trainModelOnUserInput(x, y, epochSize) {
     } 
 
     x = x.reshape([1,784]);
-    y = y.reshape([1,10]);
+    y = y.reshape([1,outputSize]);
     model.fit(x, y, { batchSize: modelBatchSize, epochs: epochSize });
 
 }
