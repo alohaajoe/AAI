@@ -47,6 +47,8 @@ var drawWeightsModule = function( w ) {
     }
 
     w.drawWeights = function(number) {
+        w.highlightTopThreeWeights(number);
+        
         let symbol = symbolArray[number];
         let minAndMax = w.getMinAndMaxForNumberArray(allWeights, number);
         w.fill(0);
@@ -59,6 +61,29 @@ var drawWeightsModule = function( w ) {
                 w.fill(0, 1, 0, mappedSquareAlpha);
                 w.square(50 + x * microSquareSize, 50 + y * microSquareSize, microSquareSize);
                 counter += outputSize;
+            }
+        }
+    }
+
+    w.highlightTopThreeWeights = function(number){
+        if (!userInputSquareIsAllBlack) {
+            for (let i = 0; i < topThreeIndicesArray.length; i++) {
+                if (number == topThreeIndicesArray[i]) {
+                    switch (i) {
+                        case 0: i = 0;
+                                w.fill(colorTop1);
+                                break;
+                        case 1: i = 1;
+                                w.fill(colorTop2);
+                                break;
+                        case 2: i = 2;
+                                w.fill(colorTop3);
+                                break;
+                        default: break;
+                    }
+                    //w.fill(150, 360, 100);
+                    w.square(42, 35, 100);
+                }
             }
         }
     }

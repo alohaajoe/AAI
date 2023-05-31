@@ -1,3 +1,6 @@
+let colorTop1;
+let colorTop2;
+let colorTop3;
 
 var drawPredictionsModule = function( p ) {
 
@@ -12,6 +15,9 @@ var drawPredictionsModule = function( p ) {
         p.rectMode(p.CENTER);        
         p.textAlign(p.CENTER, p.CENTER);
         p.textFont(pixelFont);
+        colorTop1 = p.color('#04FF00');
+        colorTop2 = p.color('#C3FF00');
+        colorTop3 = p.color('#FFF700');
     }
 
     let predictionDone = true;
@@ -23,7 +29,8 @@ var drawPredictionsModule = function( p ) {
             
             // top1 prediction
 
-            p.fill(120,1,1,1);
+            //p.fill(120,1,1,1);
+            p.fill(colorTop1);
             p.square(180,180,360);
             let symbol0 = symbolArray[topThreeIndicesArray[0]];
             let matchRate0 = predictionsArrayOrig[topThreeIndicesArray[0]];
@@ -40,7 +47,8 @@ var drawPredictionsModule = function( p ) {
             
             // top2 prediction
 
-            p.fill(180,0,0.7,1);
+            //p.fill(180,0,0.7,1);
+            p.fill(colorTop2);
             p.square(90,450,180);
             let symbol1 = symbolArray[topThreeIndicesArray[1]];
             let matchRate1 = predictionsArrayOrig[topThreeIndicesArray[1]];
@@ -59,7 +67,8 @@ var drawPredictionsModule = function( p ) {
 
             p.push();
             p.translate(180,0);
-            p.fill(180,0,0.5,1);
+            //p.fill(180,0,0.5,1);
+            p.fill(colorTop3);
             p.square(90,450,180);
             let symbol2 = symbolArray[topThreeIndicesArray[2]];
             let matchRate2 = predictionsArrayOrig[topThreeIndicesArray[2]];
