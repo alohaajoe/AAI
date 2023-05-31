@@ -25,7 +25,7 @@ var drawWeightsModule = function( w ) {
             allWeights = getAllWeights();
        // }
 
-        w.text("Weights for numbers:",50, 20);
+        w.text("Weights for symbols:",50, 20);
         w.push();
         let counter = 1;
         for (let i = 0; i < outputSize; i++) {
@@ -42,8 +42,10 @@ var drawWeightsModule = function( w ) {
     }
 
     w.drawWeights = function(number) {
+        let symbol = symbolArray[number];
         let minAndMax = w.getMinAndMaxForNumberArray(allWeights, number);
-        w.text(number, 50, 40);
+        w.fill(0);
+        w.text(symbol, 50, 45);
         let counter = number;
         for (let y = 0; y < squareSize.y; y++) {
             for (let x = 0; x < squareSize.x; x++) {
