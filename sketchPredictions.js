@@ -9,12 +9,13 @@ var drawPredictionsModule = function( p ) {
         p.frameRate(30);
         p.colorMode(p.HSB, 360, 1, 1, 1);
         p.background(0, 0, 1);
-        p.textSize(24);
         p.rectMode(p.CENTER);        
         p.textAlign(p.CENTER, p.CENTER);
+        p.textFont(pixelFont);
     }
 
     let predictionDone = true;
+    let textSizeScaleFactor = 0.6;
 
     p.draw = function() {
         if (predictionDone) {
@@ -27,12 +28,12 @@ var drawPredictionsModule = function( p ) {
             let symbol0 = symbolArray[topThreeIndicesArray[0]];
             let matchRate0 = predictionsArrayOrig[topThreeIndicesArray[0]];
             p.fill(0);            
-            p.textSize(20);
+            p.textSize(20*textSizeScaleFactor);
             p.text("top1 pred", 180, 20); 
             if(!userInputSquareIsAllBlack){
-                p.textSize(240);
+                p.textSize(240*textSizeScaleFactor);
                 p.text(symbol0, 180, 150);
-                p.textSize(20);
+                p.textSize(20*textSizeScaleFactor);
                 p.text(matchRate0, 180, 320);
             }
             
@@ -44,12 +45,12 @@ var drawPredictionsModule = function( p ) {
             let symbol1 = symbolArray[topThreeIndicesArray[1]];
             let matchRate1 = predictionsArrayOrig[topThreeIndicesArray[1]];
             p.fill(0);            
-            p.textSize(20);
+            p.textSize(20*textSizeScaleFactor);
             p.text("top2 pred", 90, 380);
             if(!userInputSquareIsAllBlack){
-                p.textSize(120);
+                p.textSize(120*textSizeScaleFactor);
                 p.text(symbol1, 90, 450); 
-                p.textSize(14);
+                p.textSize(14*textSizeScaleFactor);
                 p.text(matchRate1, 90, 500); 
             }
             
@@ -63,12 +64,12 @@ var drawPredictionsModule = function( p ) {
             let symbol2 = symbolArray[topThreeIndicesArray[2]];
             let matchRate2 = predictionsArrayOrig[topThreeIndicesArray[2]];
             p.fill(0);            
-            p.textSize(20);
+            p.textSize(20*textSizeScaleFactor);
             p.text("top3 pred", 90, 380);
             if(!userInputSquareIsAllBlack){
-                p.textSize(120);
+                p.textSize(120*textSizeScaleFactor);
                 p.text(symbol2, 90, 450); 
-                p.textSize(14);
+                p.textSize(14*textSizeScaleFactor);
                 p.text(matchRate2, 90, 500);
             }
             p.pop();

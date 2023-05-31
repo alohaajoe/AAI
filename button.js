@@ -16,10 +16,10 @@ for(let i=0; i<symbolArray.length; i++){
 
 mainElement.append(...buttonArray);
 
-let buttonRefresh = document.getElementById('button-refresh');
+let buttonClear = document.getElementById('button-clear');
 
-let buttonCorrect = document.getElementById('button-correct');
+//let buttonCorrect = document.getElementById('button-correct');
 
 
-buttonRefresh.addEventListener('click', refresh);
+buttonClear.addEventListener('click', refresh);
 
