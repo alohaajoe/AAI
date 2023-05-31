@@ -25,31 +25,34 @@ var drawPredictionsModule = function( p ) {
             p.fill(120,1,1,1);
             p.square(180,180,360);
             let symbol0 = symbolArray[topThreeIndicesArray[0]];
-
+            let matchRate0 = predictionsArrayOrig[topThreeIndicesArray[0]];
             p.fill(0);            
             p.textSize(20);
             p.text("top1 pred", 180, 20); 
-            p.textSize(240);
-            p.text(symbol0, 180, 150); 
+            if(!userInputSquareIsAllBlack){
+                p.textSize(240);
+                p.text(symbol0, 180, 150);
+                p.textSize(20);
+                p.text(matchRate0, 180, 320);
+            }
             
-            let matchRate0 = predictionsArrayOrig[topThreeIndicesArray[0]];
-            p.textSize(20);
-            p.text(matchRate0, 180, 320);
             
             // top2 prediction
 
             p.fill(180,0,0.7,1);
             p.square(90,450,180);
             let symbol1 = symbolArray[topThreeIndicesArray[1]];
+            let matchRate1 = predictionsArrayOrig[topThreeIndicesArray[1]];
             p.fill(0);            
             p.textSize(20);
             p.text("top2 pred", 90, 380);
-            p.textSize(120);
-            p.text(symbol1, 90, 450); 
+            if(!userInputSquareIsAllBlack){
+                p.textSize(120);
+                p.text(symbol1, 90, 450); 
+                p.textSize(14);
+                p.text(matchRate1, 90, 500); 
+            }
             
-            let matchRate1 = predictionsArrayOrig[topThreeIndicesArray[1]];
-            p.textSize(14);
-            p.text(matchRate1, 90, 500);
 
             // top3 prediction
 
@@ -58,15 +61,16 @@ var drawPredictionsModule = function( p ) {
             p.fill(180,0,0.5,1);
             p.square(90,450,180);
             let symbol2 = symbolArray[topThreeIndicesArray[2]];
+            let matchRate2 = predictionsArrayOrig[topThreeIndicesArray[2]];
             p.fill(0);            
             p.textSize(20);
             p.text("top3 pred", 90, 380);
-            p.textSize(120);
-            p.text(symbol2, 90, 450); 
-            
-            let matchRate2 = predictionsArrayOrig[topThreeIndicesArray[2]];
-            p.textSize(14);
-            p.text(matchRate2, 90, 500);
+            if(!userInputSquareIsAllBlack){
+                p.textSize(120);
+                p.text(symbol2, 90, 450); 
+                p.textSize(14);
+                p.text(matchRate2, 90, 500);
+            }
             p.pop();
         }
     }

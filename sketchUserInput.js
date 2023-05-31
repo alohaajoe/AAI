@@ -1,4 +1,5 @@
 let inputSquareArray = [];
+let userInputSquareIsAllBlack;
 
 var drawUserInputModule = function( u ) {
 
@@ -27,6 +28,9 @@ var drawUserInputModule = function( u ) {
                     counter++;
                 }
             }
+
+            userInputSquareIsAllBlack = inputSquareArray.every(item => item === 0);
+            //console.log("userInputSquareIsAllBlack: " + userInputSquareIsAllBlack);
         }
     }
 
@@ -48,6 +52,10 @@ var drawUserInputModule = function( u ) {
         console.log(inputSquareArray);
         getPredictionForUserInput(inputSquareArray);
         u.pop();
+    }
+
+    u.mouseClicked = function() {
+        getPredictionForUserInput(inputSquareArray);
     }
 }
 
