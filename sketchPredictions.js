@@ -15,9 +15,12 @@ var drawPredictionsModule = function( p ) {
         p.rectMode(p.CENTER);        
         p.textAlign(p.CENTER, p.CENTER);
         p.textFont(pixelFont);
-        colorTop1 = p.color('#04FF00');
-        colorTop2 = p.color('#C3FF00');
-        colorTop3 = p.color('#FFF700');
+        colorTop1 = p.color(250, 1, 1, 1);
+        colorTop2 = p.color(250, 1, 1, 1);
+        colorTop3 = p.color(250, 1, 1, 1);
+        //colorTop1 = p.color(120, 1, 1, 1);
+        //colorTop2 = p.color(75, 1, 1, 1);
+        //colorTop3 = p.color(60, 1, 1, 1);
     }
 
     let predictionDone = true;
@@ -26,6 +29,12 @@ var drawPredictionsModule = function( p ) {
     p.draw = function() {
         if (predictionDone) {
             p.background(0, 0, 1);
+
+            if(userInputSquareIsAllBlack){
+                colorTop1.setAlpha(1);
+                colorTop2.setAlpha(1);
+                colorTop3.setAlpha(1);
+            }
             
             // top1 prediction
 

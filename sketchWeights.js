@@ -69,20 +69,28 @@ var drawWeightsModule = function( w ) {
         if (!userInputSquareIsAllBlack) {
             for (let i = 0; i < topThreeIndicesArray.length; i++) {
                 if (number == topThreeIndicesArray[i]) {
+                    let highlightColor;
+                    let matchRate = predictionsArrayOrig[topThreeIndicesArray[i]];
+                    let highlightAlpha = w.map(matchRate, 0, 1, 0.1, 1);
+                    
                     switch (i) {
                         case 0: i = 0;
-                                w.fill(colorTop1);
+                                highlightColor = colorTop1;
                                 break;
                         case 1: i = 1;
-                                w.fill(colorTop2);
+                                highlightColor = colorTop2;
                                 break;
                         case 2: i = 2;
-                                w.fill(colorTop3);
+                                highlightColor = colorTop3;
                                 break;
                         default: break;
                     }
                     //w.fill(150, 360, 100);
+                    highlightColor.setAlpha(highlightAlpha);
+                    w.fill(highlightColor);
                     w.square(42, 35, 100);
+                    // delte if prediction on the right should have the same color.
+                    //highlightColor.setAlpha(1);
                 }
             }
         }
