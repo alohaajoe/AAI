@@ -34,9 +34,7 @@ var drawUserInputModule = function( u ) {
         }
     }
 
-    
-
-    u.mouseDragged = function() {
+    u.drawAndPredictUserInput = function () {
         //u.push();
         // u.translate(560, 560);
         let counter = 0;
@@ -53,9 +51,14 @@ var drawUserInputModule = function( u ) {
         getPredictionForUserInput(inputSquareArray);
         //u.pop();
     }
+    
+
+    u.mouseDragged = function() {
+        u.drawAndPredictUserInput();
+    }
 
     u.mouseClicked = function() {
-        getPredictionForUserInput(inputSquareArray);
+        u.drawAndPredictUserInput();
     }
 }
 
