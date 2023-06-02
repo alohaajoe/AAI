@@ -31,9 +31,9 @@ var drawPredictionsModule = function( p ) {
             p.background(0, 0, 1);
 
             if(userInputSquareIsAllBlack){
-                colorTop1.setAlpha(1);
-                colorTop2.setAlpha(1);
-                colorTop3.setAlpha(1);
+                colorTop1.setAlpha(0.5);
+                colorTop2.setAlpha(0.5);
+                colorTop3.setAlpha(0.5);
             }
             
             // top1 prediction
