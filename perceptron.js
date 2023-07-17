@@ -5,10 +5,10 @@ let mnist_data;
 
 // optimizable values
 let outputSize = 36;
-let sampleSizeTraining = 200;
-let sampleSizeTesting = 1;
-let modelBatchSize = 1;
-let modelEpochSize = 10;
+let sampleSizeTraining = 100;
+let sampleSizeTesting = 20;
+let modelBatchSize = 2;
+let modelEpochSize = 20;
 let userInputEpochSize = 1;
 
 let [mnistX, mnistY] = [];
@@ -30,8 +30,6 @@ first_layer = tf.layers.dense({
 //     activation: 'sigmoid',
 //     useBias: false
 // });
-
-
 
 function startPerceptron() {
     model = tf.sequential({ layers: [first_layer] });
