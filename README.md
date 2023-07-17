@@ -84,10 +84,13 @@ y = tf.concat([y,emptyVector],1);
 
 - Joe hat sich nach dem Mini-Hackathon schon etwas mit der Gestaltung beschäftigt:
   - Die Weights werden farblich hinteregt, passend zu der Prediction.
-  - Der "clear" Button ist unter dem eingabefeld.
-  - Die prediction wird nur angezeigt, wenn auch was gezeichnet wurde.
+  - Der "clear" Button ist unter dem Eingabefeld.
+  - Die Prediction wird nur angezeigt, wenn auch was gezeichnet wurde.
+  - Ein Klick reicht nun aus um die Prediction zu aktualisieren. 
 
 - Im Team haben wir uns all die Änderungen angeschaut.
+- anschließend Joes Branch mit dem Main gemerged
 - Nachdem wir eine To-Do List erstellt haben, haben sich Marc und Joe weiter mit der Darstellung beschäftigt.
 - Daniel hat Texte verfasst und eine Ladeanimation gecodet.
-- außerdem haben wir noch die Prediction Quality auf die Website gepackt.
+- Außerdem haben wir noch die Prediction Quality auf die Website gepackt.
+- Achja, und wir haben nun einen kleinen süßen pixeligen Piguin als Favicon. 🐧
