@@ -77,3 +77,17 @@
 let emptyVector = tf.zeros([sampleSizeTraining, outputSize-10]);
 y = tf.concat([y,emptyVector],1);
 ```
+
+---
+
+## 17.07.2023 - Montag | Feinschliff
+
+- Joe hat sich nach dem Mini-Hackathon schon etwas mit der Gestaltung beschäftigt:
+  - Die Weights werden farblich hinteregt, passend zu der Prediction.
+  - Der "clear" Button ist unter dem eingabefeld.
+  - Die prediction wird nur angezeigt, wenn auch was gezeichnet wurde.
+
+- Im Team haben wir uns all die Änderungen angeschaut.
+- Nachdem wir eine To-Do List erstellt haben, haben sich Marc und Joe weiter mit der Darstellung beschäftigt.
+- Daniel hat Texte verfasst und eine Ladeanimation gecodet.
+- außerdem haben wir noch die Prediction Quality auf die Website gepackt.
