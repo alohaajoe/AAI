@@ -36,7 +36,7 @@ var drawUserInputModule = function( u ) {
             u.background(0, 0, 1);
             u.textAlign(u.CENTER);
             u.textSize(20);
-            u.text("Lade Modell...", 280, 320);
+            u.text("Gleich geht's los...", 280, 320);
             u.push();
             u.translate(220, 170);
             drawLoadingSquare(u);

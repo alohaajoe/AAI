@@ -4,7 +4,7 @@ var drawPredictionsModule = function( p ) {
 
     p.setup = function() {
         refresh();
-        p.createCanvas(360, 560);
+        p.createCanvas(360, 620);
         p.frameRate(30);
         p.colorMode(p.HSB, 360, 1, 1, 1);
         p.background(0, 0, 1);
@@ -90,6 +90,15 @@ var drawPredictionsModule = function( p ) {
             }
             p.pop();
         }
+        
+        p.push();   
+        p.fill(0,0,0,0.4);
+        p.textSize(9);  
+        p.text("Anfängliche Erkennrate des", 175, 560);
+        p.text("Netzwerks auf Basis des", 175, 575);
+        p.text("MNIST-Datensatzes (nur Zahlen):", 175, 590);
+        p.text(predictionQuality || predictionQuality == 0? predictionQuality + "%" : "wird geladen...", 150, 610);
+        p.pop();
     }
     
 }

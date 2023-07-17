@@ -16,6 +16,7 @@ let [testX, testY] = [];
 
 let topThreeIndicesArray = [];
 let predictionsArrayOrig = [];
+let predictionQuality;
 
 // prepare layers and model
 first_layer = tf.layers.dense({
@@ -82,7 +83,6 @@ function trainModelOnUserInput(x, y, epochSize) {
 
 function testModel() {
     let numberOfFalsePredictions = 0;
-    let predictionQuality;
     [testX, testY] = mnist_data.getTestData(sampleSizeTesting);
     testX = testX.reshape([sampleSizeTesting, 784]);
     predictedOutput = model.predict(testX);
