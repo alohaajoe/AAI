@@ -10,6 +10,18 @@ body {
     margin: 0;
 }
 
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Press Start 2P';
+    margin-bottom: 50px;
+}
+
+section {
+    font-family: sans-serif;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -90,4 +102,9 @@ button::before {
 
 #button-clear{
     top: 10px;
+}
+
+
+#drawUserInputModule, #drawPredictionsModule {
+    margin-top: 50px;
 }
