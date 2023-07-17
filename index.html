@@ -9,7 +9,6 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
   <script src="sketchWeights.js"></script>
   <script src="sketchUserInput.js"></script>
   <script src="sketchPredictions.js"></script>
@@ -26,18 +25,16 @@
 
 
     
-    <div class="row">
-      <div class="UserInput">
-        <div id="drawUserInputModule"></div>
-        <button id="button-clear">clear</button>
+      <div class="row">
+        <div class="UserInput">
+          <div id="drawUserInputModule"></div>
+          <button id="button-clear">clear</button>
+        </div>
+        <div id="drawWeightsModule"></div>
+        <div id="drawPredictionsModule"></div>
       </div>
-      <div id="drawWeightsModule"></div>
-      <div id="drawPredictionsModule"></div>
-    </div>
 
-    <div id="buttons">
-        <!-- <button id="button-clear">clear</button> -->
-        <!-- <button id="button-correct">correct</button> -->
+      <div id="buttons">
       </div>
     </div>
   </main>
