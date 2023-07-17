@@ -24,7 +24,7 @@ var drawPredictionsModule = function( p ) {
     }
 
     let predictionDone = true;
-    let textSizeScaleFactor = 0.6;
+    let textSizeScaleFactor = 0.7;
 
     p.draw = function() {
         if (predictionDone) {
@@ -42,7 +42,7 @@ var drawPredictionsModule = function( p ) {
             p.fill(colorTop1);
             p.square(180,180,360);
             let symbol0 = symbolArray[topThreeIndicesArray[0]];
-            let matchRate0 = predictionsArrayOrig[topThreeIndicesArray[0]];
+            let matchRate0 = predictionsArrayOrig[topThreeIndicesArray[0]]  ? predictionsArrayOrig[topThreeIndicesArray[0]].toFixed(4) : 0;
             p.fill(0);            
             p.textSize(20*textSizeScaleFactor);
             p.text("top1 pred", 180, 20); 
@@ -60,7 +60,7 @@ var drawPredictionsModule = function( p ) {
             p.fill(colorTop2);
             p.square(90,450,180);
             let symbol1 = symbolArray[topThreeIndicesArray[1]];
-            let matchRate1 = predictionsArrayOrig[topThreeIndicesArray[1]];
+            let matchRate1 = predictionsArrayOrig[topThreeIndicesArray[1]]  ? predictionsArrayOrig[topThreeIndicesArray[1]].toFixed(4) : 0;
             p.fill(0);            
             p.textSize(20*textSizeScaleFactor);
             p.text("top2 pred", 90, 380);
@@ -68,7 +68,7 @@ var drawPredictionsModule = function( p ) {
                 p.textSize(120*textSizeScaleFactor);
                 p.text(symbol1, 90, 450); 
                 p.textSize(14*textSizeScaleFactor);
-                p.text(matchRate1, 90, 500); 
+                p.text(matchRate1, 90, 520); 
             }
             
 
@@ -80,7 +80,7 @@ var drawPredictionsModule = function( p ) {
             p.fill(colorTop3);
             p.square(90,450,180);
             let symbol2 = symbolArray[topThreeIndicesArray[2]];
-            let matchRate2 = predictionsArrayOrig[topThreeIndicesArray[2]];
+            let matchRate2 = predictionsArrayOrig[topThreeIndicesArray[2]] ? predictionsArrayOrig[topThreeIndicesArray[2]].toFixed(4) : 0;
             p.fill(0);            
             p.textSize(20*textSizeScaleFactor);
             p.text("top3 pred", 90, 380);
@@ -88,7 +88,7 @@ var drawPredictionsModule = function( p ) {
                 p.textSize(120*textSizeScaleFactor);
                 p.text(symbol2, 90, 450); 
                 p.textSize(14*textSizeScaleFactor);
-                p.text(matchRate2, 90, 500);
+                p.text(matchRate2, 90, 520);
             }
             p.pop();
         }
