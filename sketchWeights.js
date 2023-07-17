@@ -38,7 +38,7 @@ var drawWeightsModule = function( w ) {
             w.translate(100, 0);
             
             if(counter == 6){
-                w.translate(-100*counter+1, 100);
+                w.translate(-100*counter+1, 110);
                 counter = 0;
             }
             counter++;
@@ -58,7 +58,7 @@ var drawWeightsModule = function( w ) {
             for (let x = 0; x < squareSize.x; x++) {
                 let squareAlpha = allWeights[counter];
                 let mappedSquareAlpha = w.map(squareAlpha, minAndMax.min, minAndMax.max, 1, 0);
-                w.fill(0, 1, 0, mappedSquareAlpha);
+                w.fill(0, 0, mappedSquareAlpha, 1);
                 w.square(50 + x * microSquareSize, 50 + y * microSquareSize, microSquareSize);
                 counter += outputSize;
             }
@@ -88,7 +88,9 @@ var drawWeightsModule = function( w ) {
                     //w.fill(150, 360, 100);
                     highlightColor.setAlpha(highlightAlpha);
                     w.fill(highlightColor);
-                    w.square(42, 35, 100);
+                    // w.square(42, 35, 100);
+                    w.rect(42, 35, 100, 105);
+
                     // delte if prediction on the right should have the same color.
                     //highlightColor.setAlpha(1);
                 }
