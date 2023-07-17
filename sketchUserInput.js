@@ -31,6 +31,11 @@ var drawUserInputModule = function( u ) {
 
             userInputSquareIsAllBlack = inputSquareArray.every(item => item === 0);
             //console.log("userInputSquareIsAllBlack: " + userInputSquareIsAllBlack);
+        } else {
+            u.background(0, 0, 1);
+            u.textAlign(u.CENTER);
+            u.textSize(20);
+            u.text("Loading model...", 280, 250);
         }
     }
 
