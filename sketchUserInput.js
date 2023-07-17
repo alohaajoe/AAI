@@ -35,7 +35,11 @@ var drawUserInputModule = function( u ) {
             u.background(0, 0, 1);
             u.textAlign(u.CENTER);
             u.textSize(20);
-            u.text("Loading model...", 280, 250);
+            u.text("Loading model...", 280, 300);
+            u.push();
+            u.translate(220, 170);
+            drawLoadingSquare(u);
+            u.pop();  
         }
     }
 
@@ -74,3 +78,40 @@ function refresh () {
         inputSquareArray[i] = 0;
     }
 }
+
+
+function drawLoadingSquare(u) {
+  
+    let countMod = 5;
+    
+    fcount = u.frameCount % countMod;
+    
+    u.rectMode(u.CORNER);
+    u.fill(255);
+    u.rect(0, 0, 100, 100);
+    
+    if(fcount >= 0 && fcount < countMod * 0.25) {  
+      u.rectMode(u.CORNERS);
+      u.fill("blue");
+      u.rect(0, 0, 50, 50);
+    } 
+    
+    else if(fcount >= countMod * 0.25 && fcount < countMod * 0.5) {
+        u.rectMode(u.CORNERS);
+        u.fill("red");
+        u.rect(50, 0, 100, 50);    
+    }
+    
+    else if(fcount >= countMod * 0.5 && fcount < countMod * 0.75) {    
+        u.rectMode(u.CORNERS);
+        u.fill("cyan");
+        u.rect(50, 50, 100, 100);     
+    } 
+    
+    else if(fcount >= countMod * 0.75 && fcount <= countMod ) {  
+        u.rectMode(u.CORNERS);
+        u.fill("yellow");
+        u.rect(0, 50, 50, 100);
+    }
+    
+  }
