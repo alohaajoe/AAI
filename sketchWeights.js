@@ -15,7 +15,7 @@ var drawWeightsModule = function( w ) {
 
     w.setup = function() {
         // p5.js stuff
-        w.createCanvas(700, 700);
+        w.createCanvas(620, 670);
         w.frameRate(1);
         w.colorMode(w.HSB, 360, 1, 1, 1);
         w.background(0, 0, 1);
@@ -30,7 +30,6 @@ var drawWeightsModule = function( w ) {
             allWeights = getAllWeights();
        // }
 
-        w.text("Weights for symbols:",50, 20);
         w.push();
         let counter = 1;
         for (let i = 0; i < outputSize; i++) {
@@ -52,14 +51,14 @@ var drawWeightsModule = function( w ) {
         let symbol = symbolArray[number];
         let minAndMax = w.getMinAndMaxForNumberArray(allWeights, number);
         w.fill(0);
-        w.text(symbol, 50, 48);
+        w.text(symbol, 15, 13);
         let counter = number;
         for (let y = 0; y < squareSize.y; y++) {
             for (let x = 0; x < squareSize.x; x++) {
                 let squareAlpha = allWeights[counter];
-                let mappedSquareBrightness = w.map(squareAlpha, minAndMax.min, minAndMax.max, 1, 0);
+                let mappedSquareBrightness = w.map(squareAlpha, minAndMax.min, minAndMax.max, 0,1);
                 w.fill(0, 0, mappedSquareBrightness, 1);
-                w.square(50 + x * microSquareSize, 50 + y * microSquareSize, microSquareSize);
+                w.square(15 + x * microSquareSize, 15 + y * microSquareSize, microSquareSize);
                 counter += outputSize;
             }
         }
@@ -76,7 +75,7 @@ var drawWeightsModule = function( w ) {
                     
                     colorTop.setAlpha(highlightAlpha);
                     w.fill(colorTop);
-                    w.rect(42, 35, 100, 105);
+                    w.rect(7, -2, 100, 110);
 
                 }
             }

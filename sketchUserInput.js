@@ -14,6 +14,7 @@ var drawUserInputModule = function( u ) {
         u.colorMode(u.HSB, 360, 1, 1, 1);
         u.background(0, 0, 1);
         u.textSize(12);
+        u.textFont(pixelFont);
     }
 
     u.draw = function() {
@@ -35,7 +36,7 @@ var drawUserInputModule = function( u ) {
             u.background(0, 0, 1);
             u.textAlign(u.CENTER);
             u.textSize(20);
-            u.text("Loading model...", 280, 300);
+            u.text("Lade Modell...", 280, 320);
             u.push();
             u.translate(220, 170);
             drawLoadingSquare(u);
@@ -87,7 +88,9 @@ function drawLoadingSquare(u) {
     fcount = u.frameCount % countMod;
     
     u.rectMode(u.CORNER);
-    u.fill(255);
+    u.noStroke();
+
+    u.fill(0,0,0.2, 0.1);
     u.rect(0, 0, 100, 100);
     
     if(fcount >= 0 && fcount < countMod * 0.25) {  
