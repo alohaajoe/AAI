@@ -57,8 +57,8 @@ var drawWeightsModule = function( w ) {
         for (let y = 0; y < squareSize.y; y++) {
             for (let x = 0; x < squareSize.x; x++) {
                 let squareAlpha = allWeights[counter];
-                let mappedSquareAlpha = w.map(squareAlpha, minAndMax.min, minAndMax.max, 1, 0);
-                w.fill(0, 0, mappedSquareAlpha, 1);
+                let mappedSquareBrightness = w.map(squareAlpha, minAndMax.min, minAndMax.max, 1, 0);
+                w.fill(0, 0, mappedSquareBrightness, 1);
                 w.square(50 + x * microSquareSize, 50 + y * microSquareSize, microSquareSize);
                 counter += outputSize;
             }
@@ -66,33 +66,18 @@ var drawWeightsModule = function( w ) {
     }
 
     w.highlightTopThreeWeights = function(number){
+        colorTop = w.color(250, 1, 1, 1);
+
         if (!userInputSquareIsAllBlack) {
             for (let i = 0; i < topThreeIndicesArray.length; i++) {
                 if (number == topThreeIndicesArray[i]) {
-                    let highlightColor;
                     let matchRate = predictionsArrayOrig[topThreeIndicesArray[i]];
-                    let highlightAlpha = w.map(matchRate, 0, 1, 0.1, 1);
+                    let highlightAlpha = w.map(matchRate, 0, 1, 0.3, 1);
                     
-                    switch (i) {
-                        case 0: i = 0;
-                                highlightColor = colorTop1;
-                                break;
-                        case 1: i = 1;
-                                highlightColor = colorTop2;
-                                break;
-                        case 2: i = 2;
-                                highlightColor = colorTop3;
-                                break;
-                        default: break;
-                    }
-                    //w.fill(150, 360, 100);
-                    highlightColor.setAlpha(highlightAlpha);
-                    w.fill(highlightColor);
-                    // w.square(42, 35, 100);
+                    colorTop.setAlpha(highlightAlpha);
+                    w.fill(colorTop);
                     w.rect(42, 35, 100, 105);
 
-                    // delte if prediction on the right should have the same color.
-                    //highlightColor.setAlpha(1);
                 }
             }
         }
@@ -106,7 +91,6 @@ var drawWeightsModule = function( w ) {
         }
         minMaxForArray['min'] = w.min(arrayForSpecificNumber);
         minMaxForArray['max'] = w.max(arrayForSpecificNumber);
-        // console.log(minMaxForArray);
 
         return minMaxForArray;
     }
