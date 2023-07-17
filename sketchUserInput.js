@@ -1,4 +1,5 @@
 let inputSquareArray = [];
+let userInputSquareIsAllBlack = true;
 
 var drawUserInputModule = function( u ) {
 
@@ -9,7 +10,7 @@ var drawUserInputModule = function( u ) {
     u.setup = function() {
         refresh();
         u.createCanvas(560, 560);
-        u.frameRate(30);
+        u.frameRate(60);
         u.colorMode(u.HSB, 360, 1, 1, 1);
         u.background(0, 0, 1);
         u.textSize(12);
@@ -27,13 +28,14 @@ var drawUserInputModule = function( u ) {
                     counter++;
                 }
             }
+
+            userInputSquareIsAllBlack = inputSquareArray.every(item => item === 0);
+            //console.log("userInputSquareIsAllBlack: " + userInputSquareIsAllBlack);
         }
     }
 
-    
-
-    u.mouseDragged = function() {
-        u.push();
+    u.drawAndPredictUserInput = function () {
+        //u.push();
         // u.translate(560, 560);
         let counter = 0;
         for (let y = 0; y < squareSize.y; y++) {
@@ -47,7 +49,16 @@ var drawUserInputModule = function( u ) {
         }
         console.log(inputSquareArray);
         getPredictionForUserInput(inputSquareArray);
-        u.pop();
+        //u.pop();
+    }
+    
+
+    u.mouseDragged = function() {
+        u.drawAndPredictUserInput();
+    }
+
+    u.mouseClicked = function() {
+        u.drawAndPredictUserInput();
     }
 }
 

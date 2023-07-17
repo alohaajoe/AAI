@@ -3,9 +3,13 @@ let squareSize = {x: 28, y:28};
 let trainingDone = false;
 let microSquareSize = 3;
 
+let pixelFont;
+let textSizeScaleFactor = 0.8;
+
 var drawWeightsModule = function( w ) {
 
     w.preload = function() {
+        pixelFont = w.loadFont('./assets/PressStart2P-Regular.ttf');
         startPerceptron();
     }
 
@@ -15,8 +19,9 @@ var drawWeightsModule = function( w ) {
         w.frameRate(1);
         w.colorMode(w.HSB, 360, 1, 1, 1);
         w.background(0, 0, 1);
-        w.textSize(12);
+        w.textSize(12*textSizeScaleFactor);
         w.noStroke();
+        w.textFont(pixelFont);
     }
 
     w.draw = function() {
@@ -25,7 +30,7 @@ var drawWeightsModule = function( w ) {
             allWeights = getAllWeights();
        // }
 
-        w.text("Weights for numbers:",50, 20);
+        w.text("Weights for symbols:",50, 20);
         w.push();
         let counter = 1;
         for (let i = 0; i < outputSize; i++) {
@@ -42,8 +47,12 @@ var drawWeightsModule = function( w ) {
     }
 
     w.drawWeights = function(number) {
+        w.highlightTopThreeWeights(number);
+        
+        let symbol = symbolArray[number];
         let minAndMax = w.getMinAndMaxForNumberArray(allWeights, number);
-        w.text(number, 50, 40);
+        w.fill(0);
+        w.text(symbol, 50, 48);
         let counter = number;
         for (let y = 0; y < squareSize.y; y++) {
             for (let x = 0; x < squareSize.x; x++) {
@@ -52,6 +61,37 @@ var drawWeightsModule = function( w ) {
                 w.fill(0, 1, 0, mappedSquareAlpha);
                 w.square(50 + x * microSquareSize, 50 + y * microSquareSize, microSquareSize);
                 counter += outputSize;
+            }
+        }
+    }
+
+    w.highlightTopThreeWeights = function(number){
+        if (!userInputSquareIsAllBlack) {
+            for (let i = 0; i < topThreeIndicesArray.length; i++) {
+                if (number == topThreeIndicesArray[i]) {
+                    let highlightColor;
+                    let matchRate = predictionsArrayOrig[topThreeIndicesArray[i]];
+                    let highlightAlpha = w.map(matchRate, 0, 1, 0.1, 1);
+                    
+                    switch (i) {
+                        case 0: i = 0;
+                                highlightColor = colorTop1;
+                                break;
+                        case 1: i = 1;
+                                highlightColor = colorTop2;
+                                break;
+                        case 2: i = 2;
+                                highlightColor = colorTop3;
+                                break;
+                        default: break;
+                    }
+                    //w.fill(150, 360, 100);
+                    highlightColor.setAlpha(highlightAlpha);
+                    w.fill(highlightColor);
+                    w.square(42, 35, 100);
+                    // delte if prediction on the right should have the same color.
+                    //highlightColor.setAlpha(1);
+                }
             }
         }
     }
