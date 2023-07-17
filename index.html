@@ -2,10 +2,16 @@
 <html>
 
 <head>
-  <title>Team3</title>
+  <title>Team3 - Applied AI Symbolerkennung</title>
   <meta charset="utf-8">
   <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
- 
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+  <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
@@ -20,11 +26,32 @@
 </head>
 
 <body>
+  <h1>Buchstaben- und Ziffern-Erkenner -- Jetzt trainieren!</h1>
+
   <header>
-    <h1>Hallo, ich errate Symbole!</h1>
     <section>
-      <p>Ich bin eine Erklärung über die Funktionsweise dieser Seite.</p>
+      <h2>Headline </h2>
+        <p>In dieser Applikation wird Künstliche Intelligenz (KI) verwendet,
+        um von User:innen gezeichnete Ziffern und Buchstaben zu erkennen.
+        Beim Laden der Seite wird die KI mit einem Datensatz trainiert,
+        der nur handgezeichnete Ziffern enthält. Das Training für Buchstaben müssen die User:innen dagegen on-the-fly selbst durchführen.</p>
+        <p>In der Mitte werden dabei die sogenannten GEWICHTE ausgegeben.
+        Diese drücken quasi aus, wie hoch für jedes Symbol die Wahrscheinlichkeit ist,
+        dass ein bestimmter Pixel im Zeichenfeld ausgemalt ist.
+        Durch das Training verändern sich die Gewichte.</p>
     </section>
+    <section>
+      <h2>Anleitung:</h2>
+        <p>
+        <ul>
+        <li>Im ZEICHENFELD links einen Buchstaben oder eine Ziffer zeichnen</li>
+        <li>Rechts unter VORHERSAGE #1 schauen, ob die KI das richtige Symbol erreicht hat.</li>
+        <li>Stimmt die #1-Vorhersage?</li>
+        <li>Nein -> Die KI sollte trainiert werden: Bitte auf das korrekte Symbol auf der Tastatur klicken!</li>
+        <li>Ja -> Optional kann das Ergebnis bestätigt werden, durch einen Klick auf das korrekt erkannte Symbol auf der Tastatur.<br>
+        Das ist aber nicht nötig, und kann sogar dazu führen, dass die KI andere gelernte Symbole wieder "vergisst".</li>
+      </ul>
+      </section>
   </header>
   <main id="main">
     <div class="loader"></div>
