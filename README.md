@@ -1,109 +1,23 @@
-# What Have We Done?
+# Applied AI // Team 3 // Produktdokumentation
+In dieser Applikation wird Künstliche Intelligenz (KI) verwendet, um von User:innen gezeichnete Ziffern und Buchstaben zu erkennen. Grundlage ist das Perzeptron, ein neuronales Netzwerk, das in den 1950ern von Frank Rosenblatt entwickelt wurde.
 
-## 28.03.2023 - Dienstag | Late Night Coding
+Beim Laden der Seite wird das Netzwerk mit einem Datensatz trainiert, der nur handgezeichnete Ziffern enthält (der MNIST-Datensatz). Die Erkennrate des Netzwerks nach diesem ersten Training wird unterhalb des Vorhersage-Feldes angezeigt. Da im MNIST-Datensatz aber die amerikanische Schreibweise der Zahlen verwendet wird, kann die Güte der Vorhersage von Inputs deutscher Anwender:innen möglicherweise  davon abweichen. D.h. auch ein Nachtrainieren der Zahlen kann sinnvoll sein.
 
-- Repo erstellt.
+Das Training für Buchstaben müssen die User:innen dagegen on-the-fly komplett selbst durchführen.
 
-- uns auf Marcs Code geeinigt.
+Dazu zeichnen User:innen zunächst ein Symbol in das Zeichenfeld auf der linken Seite, woraufhin das Netzwerk zurückgibt, für welche Symbole es die höchste Wahrscheinlichkeit sieht. Die drei Vorhersagen mit der größten Sicherheit werden auf der rechten Seite der Webapplikation ausgegeben. Liegt das Netzwerk falsch, kann es durch User:innen korrigiert werden, indem sie manuell das korrekte Symbol auf einer Tastatur anklicken. Liegt das Netzwerk richtig, kann es so auch bestätigt werden.
 
-- etwas gebrainstormt, was noch so gemacht werden muss.
+Dieser Prozess wird als Training bezeichnet; das Netzwerk "lernt" dadruch nach und nach neue Symbole kennen und wird sicherer bei bereits bekannten Symbolen.
 
-- Idee skizziert.
-
-## 30.03.2023 - Donnerstag | Let's Go
-
-- Wir gehen von Marcs Code aus, da er schon etwas weiter im Code ist.
-
-- Zusammen mit Marc sind wir über seinen Code gegangen, um Unklarheiten zu bereinigen und den Code zu Refactoren.
-
-- Ziel ist es, einen guten, für alle verständlichen Ausgangscode zu erstellen.
-
-- Prediction und Test werden als Index Zahlen der Tensoren ausgegeben.
-
-- Man kann argMax auch eine axis übergeben. Vielleicht gibt es darüber auch eine Möglichkeit? - ja - default ist axis = 0. axis = 1 gibt das gewünschte Ergebniss.
-  Alternative dazu ist/ war transpose.
-
-- Wir haben nun eine Prediction Quality in % berechnet.
-
-- Es geht an die Visualisierung der Gewichte.
-
-- Dazu haben wir eine neue JavaScript Datei erstelllt (sketch.js) und die bisherige sketch.js, in der wir die Tensor berechnungen durchführen, perceptron.js genannt.
-
-- Wir Visualisieren nun die trainierten Weights der einzelnen Ziffern.
-  Sobald das System ausgelernt ist.
-
-- Frage: Stellen wir es richtig da? Wir erkennen keine Ziffern.
-
-## 31.03.2023 - Freitag | Es wird
-
-- Marc konnte anscheinend nicht Schlafen und Daniel hat sich davon auch mitreißen lassen (?). Jedenfalls gibt es jetzt einen fancy Ladekreis, der sich in der HTML Datei befindet.
-  Es gibt jetzt auch ein Canvas, auf dem gezeichnet werden kann. Ziel ist es nun diesen Canvas auszulesen und es in das Parzeptron Modell zu übergeben.
-  Wir haben übrigens wirklich die Darstellung der Weights falsch gehabt:
-  Es geht nach Spalten, nicht nach Zeilen.
-
-- Man sieht nun, wie sich die Weights entwickeln. Der Effekt ist cool, auch weil man sieht bzw. besser erahnen kann, worum es überhaupt geht.
-
-- Die Umsetzung des Arrays in das Modell war einfacher als gedacht.
-
-- Wir haben nun zumindest einen Funktionierenden Refresh Button. Und dazu eine Button.js. die sich nur um die Buttons kümmern soll.
-  Ebenso haben wir nun eine CSS Datei.
-
-- Nächster Schritt ist es, die Buchstaben mit einzubinden und einen User-Input bezüglich des Prüfens des Ergebnisses zu schaffen und damit dann wieder das Modell zu trainieren.
+Wie dieser Lernprozess auf Pixelebene funktioniert, ist in der Mitte der Seite nachvollziehbar: Hier werden die sogenannten Gewichte visualisiert, die ausdrücken, wie hoch für jedes Symbol die Wahrscheinlichkeit ist, dass ein bestimmter Pixel im 28x28 Pixel großen Zeichenfeld ausgemalt ist. Je heller ein Pixel ist, desto höher die Wahrscheinlichkeit, dass er bei einem bestimmten Symbol ausgemalt ist. Durch Korrigieren oder Bestätigen der KI-Vorhersage werden diese Gewichte verändert, also verstärkt oder abgeschwächt.
 
 ---
 
-## 30.05.2023 - Dienstag | Mini-Hackathon
+# Anleitung:
 
-- Nachdem wir heute mit dem Kurs Interaction Design angefangen haben, veranstalten wir einen kleinen Mini Hackathon.
-
-- Wir müssen uns erstmal anschauen, wie der Stand der Dinge war.
-
-- Marc hatte schon weiter gearbeitet und  einen Button für jeden Buchstaben eingefügt. (Allerdings alles noch ohne Funktion).
-
-- Ausgabe der Top 3 nicht nur auf der Konsole, sondern auch auf der Seite visualisieren
-
-- Java Script sucks. Hatten Probleme mit tf.dataSync. Synchronisiert anscheinend in beide Richtungen. (?) Wenn wir etwas im Array ändern, ändern wir anscheinend auch den Tensor.
-  Um eine Kopie vom array zu machen müssen wir anscheinend einen Spreadoperator verwenden.
-
-- Selbst vanilla JS wird mit array2 = array1 offenbar keine Kopie erstellt, sondern lediglich referenziert.
-
-- Uns wird nun die Top3 auf dem Bildschirm ausgegeben mit der MatchRate zusammen.
-
-- Alle Weights sind sichtbar und verändern sich!
-
-- Das Modell ist nun um 26 Labels erweitert, so dass auch Buchstaben nachtrainiert werden können.
-
-```javascript
-let emptyVector = tf.zeros([sampleSizeTraining, outputSize-10]);
-y = tf.concat([y,emptyVector],1);
-```
-
----
-
-## 17.07.2023 - Montag | Feinschliff
-
-- Joe hat sich nach dem Mini-Hackathon schon etwas mit der Gestaltung beschäftigt:
-  - Die Weights werden farblich hinteregt, passend zu der Prediction.
-  - Der "clear" Button ist unter dem Eingabefeld.
-  - Die Prediction wird nur angezeigt, wenn auch was gezeichnet wurde.
-  - Ein Klick reicht nun aus um die Prediction zu aktualisieren. 
-
-- Im Team haben wir uns all die Änderungen angeschaut.
-- anschließend Joes Branch mit dem Main gemerged
-- Nachdem wir eine To-Do List erstellt haben, haben sich Marc und Joe weiter mit der Darstellung beschäftigt.
-- Daniel hat Texte verfasst und eine Ladeanimation gecodet.
-- Außerdem haben wir noch die Prediction Quality auf die Website gepackt.
-- Achja, und wir haben nun einen kleinen süßen pixeligen Piguin als Favicon. 🐧
-
----
-
-## 18.07.2023 - Dienstag | Papierarbeit & Abgabe
-
-- Als Hausaufgabe haben wir uns gestern noch vorgenommen, jeder für sich die Freewritingsession für das Paper zu absolvieren. 
-- Marc hat mit verschiedenen Values herum experimentiert und unsere anfängliche Prediction Quality auf Abgabelevel gebracht.
-- Nachdem wir uns unsere Ergbnisse der Freewriting Session durchgelesen haben, haben wir das weitere Vorgehen diskutiert und den Teil fertiggestellt und abgegeben. 
-- Anschließend ging es an die Produktdoku.
-  - Daniel hat da schon was vorbereitet.
-  - Marc und Joe haben ergänzt.
-- Zum Schluss haben wir alles noch mal reviewed
-- Fertig!
+1. Im ZEICHENFELD links einen Buchstaben oder eine Ziffer zeichnen
+2. Rechts unter VORHERSAGE bei Top 1 schauen, ob die KI das richtige Symbol erreicht hat.
+3. Stimmt die Top-1-Vorhersage? <br>
+Nein -> Die KI sollte trainiert werden: Bitte auf das korrekte Symbol auf der Tastatur klicken! <br>
+Ja -> Optional kann das Ergebnis bestätigt werden, durch einen Klick auf das korrekt erkannte Symbol auf der Tastatur.
+Das ist aber nicht nötig, und kann sogar dazu führen, dass die KI andere gelernte Symbole wieder "vergisst".
