@@ -94,3 +94,16 @@ y = tf.concat([y,emptyVector],1);
 - Daniel hat Texte verfasst und eine Ladeanimation gecodet.
 - Außerdem haben wir noch die Prediction Quality auf die Website gepackt.
 - Achja, und wir haben nun einen kleinen süßen pixeligen Piguin als Favicon. 🐧
+
+---
+
+## 18.07.2023 - Dienstag | Papierarbeit & Abgabe
+
+- Als Hausaufgabe haben wir uns gestern noch vorgenommen, jeder für sich die Freewritingsession für das Paper zu absolvieren. 
+- Marc hat mit verschiedenen Values herum experimentiert und unsere anfängliche Prediction Quality auf Abgabelevel gebracht.
+- Nachdem wir uns unsere Ergbnisse der Freewriting Session durchgelesen haben, haben wir das weitere Vorgehen diskutiert und den Teil fertiggestellt und abgegeben. 
+- Anschließend ging es an die Produktdoku.
+  - Daniel hat da schon was vorbereitet.
+  - Marc und Joe haben ergänzt.
+- Zum Schluss haben wir alles noch mal reviewed
+- Fertig!
