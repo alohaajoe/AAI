@@ -7,11 +7,11 @@ Das Training für Buchstaben müssen die User:innen dagegen on-the-fly komplett 
 
 Dazu zeichnen User:innen zunächst ein Symbol in das Zeichenfeld auf der linken Seite, woraufhin das Netzwerk zurückgibt, für welche Symbole es die höchste Wahrscheinlichkeit sieht. Die drei Vorhersagen mit der größten Sicherheit werden auf der rechten Seite der Webapplikation ausgegeben. Liegt das Netzwerk falsch, kann es durch User:innen korrigiert werden, indem sie manuell das korrekte Symbol auf einer Tastatur anklicken. Liegt das Netzwerk richtig, kann es so auch bestätigt werden.
 
-Dieser Prozess wird als Training bezeichnet; das Netzwerk "lernt" dadruch nach und nach neue Symbole kennen und wird sicherer bei bereits bekannten Symbolen.
+Dieser Prozess wird als Training bezeichnet; das Netzwerk "lernt" dadurch nach und nach neue Symbole kennen und wird sicherer bei bereits bekannten Symbolen.
 
 Wie dieser Lernprozess auf Pixelebene funktioniert, ist in der Mitte der Seite nachvollziehbar: Hier werden die sogenannten Gewichte visualisiert, die ausdrücken, wie hoch für jedes Symbol die Wahrscheinlichkeit ist, dass ein bestimmter Pixel im 28x28 Pixel großen Zeichenfeld ausgemalt ist. Je heller ein Pixel ist, desto höher die Wahrscheinlichkeit, dass er bei einem bestimmten Symbol ausgemalt ist. Durch Korrigieren oder Bestätigen der KI-Vorhersage werden diese Gewichte verändert, also verstärkt oder abgeschwächt.
 
----
+
 
 # Anleitung:
 
